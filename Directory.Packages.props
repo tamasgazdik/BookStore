@@ -1,0 +1,10 @@
+﻿<Project>
+	<PropertyGroup>
+		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageVersion Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+		<PackageVersion Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+		<PackageVersion Include="SonarAnalyzer.CSharp" Version="10.6.0.109712" />
+	</ItemGroup>
+</Project>
