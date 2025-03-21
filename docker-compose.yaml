@@ -28,6 +28,24 @@ services:
       - postgres_network
     volumes:
       - pgadmin_pgadmin:/var/lib/pgadmin
+  
+  bookstore:
+    image: bookstore:latest
+    container_name: bookstore
+    restart: always
+    env_file:
+      - Source/WebAPI/.env
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    depends_on:
+      - postgres
+    networks:
+      - postgres_network
+    volumes:
+      - ./bookstorecert.pfx:/https-certs/bookstorecert.pfx
 
 networks:
   postgres_network:

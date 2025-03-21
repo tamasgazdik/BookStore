@@ -1,0 +1,55 @@
+p {
+  padding-block: 0.5rem;
+  font-size: 1.5rem;
+}
+
+p.loading {
+  font-size: 1rem;
+}
+
+ul {
+  padding-block-start: 0.5rem;
+  li {
+    text-align: center;
+    list-style-type: none;
+    padding-block: 0.5rem;
+    cursor: pointer;
+    margin: 0;
+    transition: 0.25s;
+  }
+
+  li:hover {
+    background-color: #222;
+    border-radius: 0.5rem;
+  }
+
+  hr {
+    opacity: 60%;
+  }
+
+  .add-new-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .add-new-btn {
+      background: none;
+      border: none;
+      margin-left: 0.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 0;
+
+      svg {
+        stroke: white;
+        transition: stroke 0.2s;
+        width: 1rem;
+        height: 1rem;
+      }
+
+      &:hover svg {
+        stroke: red;
+      }
+    }
+  }
+}

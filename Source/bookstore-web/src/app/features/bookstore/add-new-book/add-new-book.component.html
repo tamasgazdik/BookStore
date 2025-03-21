@@ -1,0 +1,49 @@
+<button (click)="navigateBack()" class="back-btn">
+  <svg xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round">
+    <polyline points="15 18 9 12 15 6"></polyline>
+  </svg>
+  Back
+</button>
+
+<form class="add-new-form"
+      (ngSubmit)="onSubmit()">
+  <h2>Add a New Book</h2>
+  <div class="text-input-fields-container">
+    <label for="title">&ast;Title</label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      maxlength="70"
+      [(ngModel)]="book.title" />
+    <label for="author">&ast;Author</label>
+    <input
+      type="text"
+      id="author"
+      name="author"
+      maxlength="70"
+      [(ngModel)]="book.author" />
+  </div>
+
+  <div class="input-field">
+    <label for="publicationDate">Publication Date</label>
+    <input
+      type="date"
+      id="publicationDate"
+      name="publicationDate"
+      [(ngModel)]="book.publicationDate"
+      [max]="today"
+       />
+  </div>
+
+  <!-- Create Button -->
+  <button type="submit" class="create-btn">Create</button>
+</form>

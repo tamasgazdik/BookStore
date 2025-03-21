@@ -1,0 +1,20 @@
+/src
+ ├── /app
+ │    ├── /core          # Core services, singleton classes (Auth, API services)
+ │    ├── /shared        # Reusable components, directives, pipes, and models
+ │    ├── /features      # Feature modules with their own components
+ │    │    ├── /dashboard
+ │    │    │    ├── dashboard.component.ts
+ │    │    │    ├── dashboard.module.ts
+ │    │    ├── /products
+ │    │    │    ├── components/
+ │    │    │    ├── services/
+ │    │    │    ├── models/
+ │    ├── /assets        # Static assets like images, fonts, etc.
+ │    ├── /environments  # Environment configurations
+ │    ├── app.component.ts
+ │    ├── app.module.ts
+ │    ├── app-routing.module.ts
+ ├── /styles            # Global styles & SCSS variables
+ ├── angular.json
+ ├── package.json

@@ -2,3 +2,16 @@
 *bin/
 *obj/
 *.user
+
+# Ignore Angular-related files in any subfolder
+node_modules/
+dist/
+.angular/
+.angular/cache/
+.npmrc
+.env
+
+# Logs and temp files
+npm-debug.log
+yarn-error.log
+.temp

@@ -1,0 +1,9 @@
+<main>
+    <app-book-list 
+        (bookSelected)="onBookSelected()"
+        (newBookSelected)="onNewBookSelected()" />
+    <hr />
+    <div class="content-container">
+        <router-outlet />
+    </div>
+</main>

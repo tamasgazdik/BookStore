@@ -1,0 +1,32 @@
+<div *ngIf="this.selectedBooks().length">
+    <p>Details of selected book(s)</p>
+    <app-selected-books-tags [selectedBookTitles]="this.getBookTitles()" (bookToRemove)="this.onRemoveBook($event)" />
+    <table>
+        <tr>
+            <th></th>
+            <th>Index</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publication Date</th>
+        </tr>
+            <!-- <td><button id="edit-button"><svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                fill="currentColor"
+            >
+                <path d="M3 21v-3.75L14.06 6.19l3.75 3.75L6.75 21H3zm15.13-12.19l-3.75-3.75 2.12-2.12a1.5 1.5 0 0 1 2.12 0l1.63 1.63a1.5 1.5 0 0 1 0 2.12l-2.12 2.12z"/>
+            </svg></button></td> -->
+            
+        @for (book of this.selectedBooks(); track $index) {
+            <tr>
+                <td></td>
+                <td>{{book.id}}</td>
+                <td>{{book.title}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.publicationDate}}</td>
+            </tr>
+        }
+    </table>
+</div>

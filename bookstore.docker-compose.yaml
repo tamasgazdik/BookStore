@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:  
+  bookstore:
+    image: bookstore:latest
+    container_name: bookstore
+    restart: always
+    env_file:
+      - Source/WebAPI/.env
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    volumes:
+      - ./bookstorecert.pfx:/https-certs/bookstorecert.pfx
