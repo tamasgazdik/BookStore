@@ -6,7 +6,7 @@ services:
     container_name: bookstore
     restart: always
     env_file:
-      - Source/WebAPI/.env
+      - Source/BookStore.WebAPI/.env
     ports:
       - "8080:8080"
       - "8081:8081"

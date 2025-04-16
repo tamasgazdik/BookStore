@@ -6,10 +6,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using BookStore.Application.Repository;
 using System.Text.Json.Serialization;
-using FluentValidation;
-using BookStore.Application.Commands.AddBookCommand;
-using FluentValidation.Validators;
-using BookStore.Application.Commands.ModifyBookCommand;
 
 namespace BookStore.WebAPI
 {
@@ -63,6 +59,7 @@ namespace BookStore.WebAPI
             }
 
             app.UseHttpsRedirection();
+
             app.UseCustomCors();
 
             //app.UseAuthorization();

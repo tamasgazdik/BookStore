@@ -5,7 +5,7 @@ using FluentValidation;
 
 namespace BookStore.Application.Commands.AddBookCommand
 {
-    internal class AddBookCommandHandler : ICommandHandler<AddBookCommand, int?>
+    internal class AddBookCommandHandler : ICommandHandler<AddBookCommand, Book?>
     {
         private readonly IValidator<AddBookCommand> bookValidator;
         private readonly IBookStoreRepository bookStoreRepository;
@@ -18,7 +18,7 @@ namespace BookStore.Application.Commands.AddBookCommand
             this.bookStoreRepository = bookStoreRepository;
         }
 
-        public async Task<Result<int?>> Handle(AddBookCommand request, CancellationToken cancellationToken)
+        public async Task<Result<Book?>> Handle(AddBookCommand request, CancellationToken cancellationToken)
         {
             var validationResult = await bookValidator.ValidateAsync(request);
             if (validationResult.IsValid)
@@ -30,14 +30,14 @@ namespace BookStore.Application.Commands.AddBookCommand
                     PublicationDate = request.PublicationDate
                 };
 
-                var createdBookId = await bookStoreRepository.AddBookAsync(book, cancellationToken);
-                if (createdBookId is not null && createdBookId.HasValue)
+                var createdBook = await bookStoreRepository.AddBookAsync(book, cancellationToken);
+                if (createdBook is not null)
                 {
-                    return Result.Success<int?>(createdBookId.Value);
+                    return Result.Success<Book?>(createdBook);
                 }
                 else
                 {
-                    return Result.Failure<int?>(
+                    return Result.Failure<Book?>(
                         new Error(ErrorType.Failure, "Unkown error occured during book creation.")
                     );
                 }
@@ -47,7 +47,7 @@ namespace BookStore.Application.Commands.AddBookCommand
                 var errors = validationResult.Errors.Select(validationError =>
                     new Error(ErrorType.Validation, validationError.ErrorMessage));
                 
-                return Result.Failure<int?>(errors);
+                return Result.Failure<Book?>(errors);
             }
         }
     }
