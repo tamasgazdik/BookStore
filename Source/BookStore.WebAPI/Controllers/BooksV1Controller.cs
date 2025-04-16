@@ -31,6 +31,7 @@ namespace BookStore.WebAPI.Controllers
 
         [HttpGet]
         [Route("{id}")]
+        [ActionName(nameof(GetBookByIdAsync))] // needed because of CreatedAtAction in AddBookAsync
         public async Task<IActionResult> GetBookByIdAsync(int? id, CancellationToken cancellationToken)
         {
             var query = new GetBookByIdQuery(id);
@@ -64,28 +65,16 @@ namespace BookStore.WebAPI.Controllers
 
             var result = await Sender.Send(command, cancellationToken);
 
-            return result.Match<int?, IActionResult>(
-                success: (result) =>
-                    {
-                        return CreatedAtAction(
-                            nameof(GetBookByIdAsync),
-                            new { id = result.Value },
-                            new { id = result.Value });
-                    },
-                failure: (result) =>
-                    {
-                        return BadRequest(result.Errors);
-                    });
+            if (result.IsSuccess)
+            {
 
-            //if (result.IsSuccess)
-            //{
-            //    return CreatedAtAction(
-            //        nameof(GetBookById),
-            //        new { id = result.Value },
-            //        new { id = result.Value });
-            //}
+                return CreatedAtAction(
+                    nameof(GetBookByIdAsync),
+                    new { id = result.Value },
+                    result.Value);
+            }
 
-            //return BadRequest(result.Errors);
+            return BadRequest(result.Errors);
         }
 
         [HttpPut]

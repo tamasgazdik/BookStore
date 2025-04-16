@@ -1,16 +1,15 @@
 ﻿using BookStore.Application.Repository;
 using BookStore.Core.Results;
-using BookStore.Domain.Model;
 using FluentValidation;
 
 namespace BookStore.Application.Commands.ModifyBookCommand
 {
-    public sealed class DeleteBookCommandHandler : ICommandHandler<ModifyBookCommand, int?>
+    public sealed class ModifyBookCommandHandler : ICommandHandler<ModifyBookCommand, int?>
     {
         private readonly IValidator<ModifyBookCommand> validator;
         private readonly IBookStoreRepository bookStoreRepository;
 
-        public DeleteBookCommandHandler(
+        public ModifyBookCommandHandler(
             IValidator<ModifyBookCommand> validator,
             IBookStoreRepository bookStoreRepository)
         {

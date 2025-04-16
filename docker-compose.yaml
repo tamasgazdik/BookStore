@@ -34,7 +34,7 @@ services:
     container_name: bookstore
     restart: always
     env_file:
-      - Source/WebAPI/.env
+      - Source/BookStore.WebAPI/.env
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
     ports:

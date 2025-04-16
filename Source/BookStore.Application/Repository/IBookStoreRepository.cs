@@ -8,7 +8,7 @@ namespace BookStore.Application.Repository
 
         Task<Book?> GetBookByIdAsync(int id, CancellationToken cancellationToken = default);
 
-        Task<int?> AddBookAsync(Book book, CancellationToken cancellationToken = default);
+        Task<Book?> AddBookAsync(Book book, CancellationToken cancellationToken = default);
 
         Task<int?> ModifyBookAsync(int id, BookDto newBook, CancellationToken cancellationToken = default);
 

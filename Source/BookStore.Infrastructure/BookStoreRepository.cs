@@ -30,12 +30,12 @@ namespace BookStore.Infrastructure
         #endregion
 
         #region Command Implementations
-        public async Task<int?> AddBookAsync(Book book, CancellationToken cancellationToken = default)
+        public async Task<Book?> AddBookAsync(Book book, CancellationToken cancellationToken = default)
         {
             var result = await bookStoreDbContext.Books.AddAsync(book, cancellationToken);
             await bookStoreDbContext.SaveChangesAsync(cancellationToken);
 
-            return result.Entity.Id;
+            return result?.Entity;
         }
 
         public async Task<int?> ModifyBookAsync(int id, BookDto newBook, CancellationToken cancellationToken = default)
@@ -59,7 +59,7 @@ namespace BookStore.Infrastructure
 
         public async Task<int?> DeleteBookAsync(int id, CancellationToken cancellationToken = default)
         {
-            var bookToBeDeleted = await bookStoreDbContext.Books.FindAsync(id);
+            var bookToBeDeleted = await bookStoreDbContext.Books.FindAsync(id, cancellationToken);
             if (bookToBeDeleted is null)
             {
                 return null;
